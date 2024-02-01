@@ -17,19 +17,18 @@ package dev.morling.onebrc;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import static java.lang.Class.forName;
+import static java.lang.System.out;
 import java.lang.invoke.MethodHandle;
+import static java.lang.invoke.MethodHandles.lookup;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
+import static java.util.Comparator.comparing;
 import java.util.HashMap;
 import java.util.List;
-
-import static java.lang.Class.forName;
-import static java.lang.System.out;
-import static java.lang.invoke.MethodHandles.lookup;
-import static java.util.Comparator.comparing;
 
 public class CalculateAverage_3j5a {
 
