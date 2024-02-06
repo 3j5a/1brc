@@ -17,6 +17,8 @@ package dev.morling.onebrc;
 
 import java.io.IOException;
 
+import static java.lang.ProcessBuilder.Redirect.*;
+
 public class CalculateAverage_Julia {
 
     private static final String FILE = "./measurements.txt";
@@ -27,10 +29,12 @@ public class CalculateAverage_Julia {
             System.exit(0);
         }
         var fork = args[0];
-        var julia = new ProcessBuilder("julia", "src/main/julia/CalculateAverage_" + fork + ".jl", FILE)
-                .redirectOutput(ProcessBuilder.Redirect.INHERIT)
-                .redirectError(ProcessBuilder.Redirect.INHERIT).start();
-        julia.waitFor();
+        var julia = new ProcessBuilder("julia", "src/main/julia/CalculateAverage_" + fork + ".jl", FILE);
+        var environment = julia.environment();
+        for (int i = 1; i < args.length - 1; i++) {
+            environment.put(args[i], args[i + 1]);
+        }
+        julia.redirectOutput(INHERIT).redirectError(INHERIT).start().waitFor();
     }
 
 }

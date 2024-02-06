@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 #  Copyright 2023 The original authors
 #
@@ -14,4 +14,16 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-java --class-path target/average-1.0.0-SNAPSHOT.jar dev.morling.onebrc.CalculateAverage_Julia 3j5a JULIA_NUM_THREADS auto
+JAVA_VERSION="21.0.2-open"
+if [ ! -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
+  echo -e "Installing SDKMAN!..." >&2
+  curl -s "https://get.sdkman.io" | bash
+fi
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+if [ ! -d "$HOME/.sdkman/candidates/java/$JAVA_VERSION" ]; then
+    echo -e "Installing Java $JAVA_VERSION" >&2
+    sdk install java $JAVA_VERSION
+fi
+sdk use java $JAVA_VERSION 1>&2
+./mvnw package
+sdk use java $JAVA_VERSION 1>&2

@@ -14,4 +14,4 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 #
-java --class-path target/average-1.0.0-SNAPSHOT.jar dev.morling.onebrc.CalculateAverage_Julia 3j5a JULIA_NUM_THREADS auto
+java --class-path target/average-1.0.0-SNAPSHOT.jar dev.morling.onebrc.CalculateAverage_Julia jkrumbiegel
